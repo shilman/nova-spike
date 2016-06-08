@@ -14,7 +14,7 @@ Running the following command will set up the NPM packages locally on your machi
 After you've linked the packages, you should be able to run Storybook to browse
 the components:
 ```
-cd nova-components
+cd nova-base-components
 npm install
 npm run storybook
 ```
