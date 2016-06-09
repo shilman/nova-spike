@@ -29,5 +29,6 @@ be cataloging major work items here.
 
 - [ ] Style should be updated to render properly in storybook (how?)
 - [ ] Meteor references should be removed
-- [ ] Users completely stubbed outn
+- [ ] Users completely stubbed out
 - [ ] nova-forms completely stubbed out
+- [ ] nova-base-styles temporarily (?) merged into nova-base-components
