@@ -45,18 +45,14 @@ class CommentsItem extends Component{
     const comment = this.props.comment;
     if (window.confirm(`Delete comment “${comment.body}”?`)) {
       Meteor.call('comments.deleteById', comment._id, (error, result) => {
-       Messages.flash(`Comment “${comment.body}” deleted.`, "success");
-       Events.track("comment deleted", {'_id': comment._id});
+        Messages.flash(`Comment “${comment.body}” deleted.`, "success");
+        Events.track("comment deleted", {'_id': comment._id});
       });
     }
   }
 
   renderComment() {
     const htmlBody = {__html: this.props.comment.htmlBody};
-    console.log('components', Telescope.components)
-    console.log('icon', Telescope.components.Icon)
-    console.log('icon2', Telescope.getComponent('Icon'))
-
     return (
       <div className="comments-item-text">
         <div dangerouslySetInnerHTML={htmlBody}></div>
@@ -95,8 +91,6 @@ class CommentsItem extends Component{
 
   render() {
     const comment = this.props.comment;
-    console.log("components", Telescope.components);
-
     return (
       <div className="comments-item" id={comment._id}>
         <div className="comments-item-body">
