@@ -3,6 +3,32 @@ const Users = {};
 //FIXME: helpers
 Users.helpers = () => {}
 
+//FIXME: roles
+Users.is = {
+  admin: (user) => false,
+  adminById: (userId) => true,
+  owner: (user, doc) => Users.is.ownerById(user._id, doc),
+  ownerById: (userId, doc) => userId === doc.userId,
+  memberOrAdmin: (user) => true,
+  ownerOrAdmin: (user, doc) => true,
+  invited: (user) => true,
+  invitedById: (user) => true,
+}
+
+//FIXME: permissions
+Users.can = {
+  view: (user) => true,
+  viewById: (user) => true,
+  viewPost: (user) => true,
+  post: (user) => true,
+  comment: (user) => true,
+  edit: (user, doc) => Users.is.owner(user, doc),
+  editById: (userId, doc) => Users.is.ownerById(userId, doc),
+  submitField: (user, field) => true,
+  editField: (user, field, doc) => true,
+  invite: (user) => true
+}
+
 ////////////////////
 //  User Getters  //
 ////////////////////

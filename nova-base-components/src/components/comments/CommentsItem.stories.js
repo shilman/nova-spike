@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@kadira/storybook'
-import Factory from '../../data'
+import Factory from '../../factories'
 import '../components.js'
 import CommentsItem from './CommentsItem.jsx'
 
@@ -10,4 +10,8 @@ storiesOf('CommentsItem', module)
   })
   .add('deleted', () => {
     return <CommentsItem {...Factory.build('comments-item-deleted-props')} />
+  })
+  .add('comment owner', () => {
+    console.log(Factory.build('comments-item-owner-props'))
+    return <CommentsItem {...Factory.build('comments-item-owner-props')} />
   })

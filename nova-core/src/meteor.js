@@ -1,3 +1,3 @@
 const Meteor = {}
 
-export default Meteor;
+export default Meteor

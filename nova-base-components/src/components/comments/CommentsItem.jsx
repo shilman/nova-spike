@@ -1,8 +1,9 @@
 import React, { PropTypes, Component } from 'react';
 import moment from 'moment'
 import Telescope, { Meteor } from 'nova-core'
+import Users from 'nova-users'
 
-class CommentsItem extends Component{
+class CommentsItem extends Component {
 
   constructor() {
     super();
@@ -98,9 +99,8 @@ class CommentsItem extends Component{
             <Telescope.components.UsersAvatar size="small" user={comment.user}/>
             <Telescope.components.UsersName user={comment.user}/>
             <div className="comments-item-date">{moment(comment.postedAt).fromNow()}</div>
-            {/* FIXME: Users?? */}
-            {/*Users.can.edit(this.props.currentUser, this.props.comment) ? <a className="comment-edit" onClick={this.showEdit}>Edit</a> : null*/}
-            {/*Users.can.edit(this.props.currentUser, this.props.comment) ? <a className="comment-delete" onClick={this.deleteComment}>Delete</a> : null*/}
+            {Users.can.edit(this.props.currentUser, this.props.comment) ? <a className="comment-edit" onClick={this.showEdit}>Edit</a> : null}
+            {Users.can.edit(this.props.currentUser, this.props.comment) ? <a className="comment-delete" onClick={this.deleteComment}>Delete</a> : null}
           </div>
           {this.state.showEdit ? this.renderEdit() : this.renderComment()}
         </div>
