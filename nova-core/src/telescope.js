@@ -15,7 +15,6 @@ Telescope.config = {};
 Telescope.components = {};
 
 Telescope.registerComponent = (name, component) => {
-  console.log('registering', name);
   Telescope.components[name] = component;
 };
 

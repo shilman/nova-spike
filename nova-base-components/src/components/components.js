@@ -11,9 +11,7 @@ import Telescope from 'nova-core'
 // Telescope.registerComponent("FlashMessages",        require('./common/FlashMessages.jsx'));
 // Telescope.registerComponent("Newsletter",       require('./common/Newsletter.jsx'));
 
-console.log('pre-register');
 Telescope.registerComponent("Icon",                 require('./common/Icon.jsx'));
-console.log('post-register');
 
 // Telescope.registerComponent("SearchForm",           require('./common/SearchForm.jsx'));
 // Telescope.registerComponent("AppLoading",           require('./common/AppLoading.jsx'));

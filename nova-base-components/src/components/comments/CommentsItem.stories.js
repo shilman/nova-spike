@@ -12,6 +12,5 @@ storiesOf('CommentsItem', module)
     return <CommentsItem {...Factory.build('comments-item-deleted-props')} />
   })
   .add('comment owner', () => {
-    console.log(Factory.build('comments-item-owner-props'))
     return <CommentsItem {...Factory.build('comments-item-owner-props')} />
   })
