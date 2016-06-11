@@ -14,7 +14,7 @@ class CommentsNew extends Component {
       prefilledProps = Object.assign(prefilledProps, {
         parentCommentId: parentComment._id,
         // if parent comment has topLevelCommentId use it; if not then it *is* the top level comment
-        topLevelCommentId: parentComment.topLevelCommentId || parentComment._id
+        topLevelCommentId: parentComment.topLevelCommentId || parentComment._id,
       })
     }
 

@@ -42,6 +42,7 @@
     "react": "^15.0.0",
     "react-addons-test-utils": "^15.0.0",
     "react-dom": "^15.0.0",
+    "react-with-context": "^1.0.2",
     "rosie": "^1.6.0",
     "sass-loader": "^3.2.0",
     "sinon": "^1.17.3",
