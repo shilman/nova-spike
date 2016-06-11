@@ -56,9 +56,11 @@
     "classnames": "^2.2.5",
     "d3": "^3.5.17",
     "moment": "^2.13.0",
+    "nova-comments": "^0.0.0",
     "nova-core": "^0.0.0",
+    "nova-forms": "^0.0.0",
     "nova-users": "^0.0.0",
-    "nova-forms": "^0.0.0"
+    "react-bootstrap": "^0.29.4"
   },
   "main": "dist/index.js",
   "engines": {

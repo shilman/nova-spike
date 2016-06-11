@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import Formsy from 'formsy-react';
 import FRC from 'formsy-react-components';
 
-import DateTime from './DateTime.jsx';
+import DateTime from './DateTime';
 
 import Utils from './utils.js';
 
@@ -45,7 +45,7 @@ class FormComponent extends Component {
         case "textarea":
           return <Textarea      {...properties} />;
         case "checkbox":
-          return <Checkbox      {...properties} />;        
+          return <Checkbox      {...properties} />;
         // note: checkboxgroup cause React refs error
         case "checkboxgroup":
          return <CheckboxGroup  {...properties} />;
@@ -55,7 +55,7 @@ class FormComponent extends Component {
           return <Select        {...properties} />;
         // case "datetime":
         //   return <DateTime      {...properties} />;
-        default: 
+        default:
           return <Input         {...properties} type="text" />;
       }
 
@@ -70,9 +70,9 @@ class FormComponent extends Component {
 
 FormComponent.propTypes = {
   name: React.PropTypes.string,
-  label: React.PropTypes.string, 
-  value: React.PropTypes.any, 
-  prefilledValue: React.PropTypes.any, 
+  label: React.PropTypes.string,
+  value: React.PropTypes.any,
+  prefilledValue: React.PropTypes.any,
   options: React.PropTypes.any,
   control: React.PropTypes.any,
   datatype: React.PropTypes.any,

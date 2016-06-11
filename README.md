@@ -32,3 +32,5 @@ be cataloging major work items here.
 - [ ] Users completely stubbed out
 - [ ] nova-forms completely stubbed out
 - [ ] nova-base-styles temporarily (?) merged into nova-base-components
+- [ ] nova-forms flashes
+- [ ] linting + commit hooks

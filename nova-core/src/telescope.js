@@ -24,7 +24,9 @@ Telescope.getComponent = (name) => {
 
 // ------------------------------ Dynamic Icons ------------------------------ //
 
-Telescope.utils = {};
+Telescope.utils = {
+  getFieldLabel: () => 'label',
+}
 
 /**
  * @summary Take an icon name (such as "open") and return the HTML code to display the icon

@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import Actions from '../actions.js';
-import NovaForm from "nova-forms";
+import { NovaForm } from "nova-forms";
+import Comments from "nova-comments";
 
 class CommentsNew extends Component {
 

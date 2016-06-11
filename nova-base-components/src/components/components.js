@@ -6,11 +6,10 @@ import Telescope from 'nova-core'
 // Telescope.registerComponent("Header",               require('./common/Header.jsx'));
 // Telescope.registerComponent("Layout",               require('./common/Layout.jsx'));
 // Telescope.registerComponent("Logo",                 require('./common/Logo.jsx'));
-// Telescope.registerComponent("Flash",                require('./common/Flash.jsx'));
+Telescope.registerComponent("Flash",                require('./common/Flash.jsx'));
 // Telescope.registerComponent('HeadTags',             require('./common/HeadTags.jsx'));
 // Telescope.registerComponent("FlashMessages",        require('./common/FlashMessages.jsx'));
 // Telescope.registerComponent("Newsletter",       require('./common/Newsletter.jsx'));
-
 Telescope.registerComponent("Icon",                 require('./common/Icon.jsx'));
 
 // Telescope.registerComponent("SearchForm",           require('./common/SearchForm.jsx'));
@@ -76,3 +75,5 @@ Telescope.registerComponent("UsersName",            require('./users/UsersName.j
 // Telescope.registerComponent("UsersMenu",            require('./users/UsersMenu.jsx'));
 // Telescope.registerComponent("UsersAccountMenu",     require('./users/UsersAccountMenu.jsx'));
 // Telescope.registerComponent("UsersAccountForm",     require('./users/UsersAccountForm.jsx'));
+
+export default Telescope
