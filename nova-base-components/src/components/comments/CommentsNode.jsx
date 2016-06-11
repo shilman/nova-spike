@@ -1,24 +1,32 @@
 import React, { PropTypes, Component } from 'react'
+import Telescope from 'nova-core'
 
 class CommentsNode extends Component {
-
   renderComment(comment) {
-
     return (
-      <Telescope.components.CommentsItem comment={comment} key={comment._id} currentUser={this.props.currentUser} />
+      <Telescope.components.CommentsItem
+        comment={comment}
+        key={comment._id}
+        currentUser={this.props.currentUser}
+      />
     )
   }
 
   renderChildren(children) {
     return (
       <div className='comments-children'>
-        {children.map(comment => <CommentsNode comment={comment} key={comment._id} currentUser={this.props.currentUser} />)}
+        {children.map(comment =>
+          <CommentsNode
+            comment={comment}
+            key={comment._id}
+            currentUser={this.props.currentUser}
+          />
+        )}
       </div>
     )
   }
 
   render() {
-
     const comment = this.props.comment
     const children = this.props.comment.childrenResults
 
@@ -33,8 +41,8 @@ class CommentsNode extends Component {
 }
 
 CommentsNode.propTypes = {
-  comment: React.PropTypes.object.isRequired, // the current comment
-  currentUser: React.PropTypes.object, // the current user
+  comment: PropTypes.object.isRequired, // the current comment
+  currentUser: PropTypes.object, // the current user
 }
 
 module.exports = CommentsNode

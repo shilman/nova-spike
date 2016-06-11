@@ -1,9 +1,8 @@
 import React, { PropTypes, Component } from 'react'
-import Actions from '../actions.js'
+import Comments from 'nova-comments'
 import NovaForm from 'nova-forms'
 
 class CommentsEdit extends Component {
-
   render() {
     return (
       <div className='comments-edit-form'>
@@ -19,17 +18,16 @@ class CommentsEdit extends Component {
       </div>
     )
   }
-
 }
 
 CommentsEdit.propTypes = {
-  comment: React.PropTypes.object.isRequired,
-  successCallback: React.PropTypes.func,
-  cancelCallback: React.PropTypes.func,
+  comment: PropTypes.object.isRequired,
+  successCallback: PropTypes.func,
+  cancelCallback: PropTypes.func,
 }
 
 CommentsEdit.contextTypes = {
-  currentUser: React.PropTypes.object,
+  currentUser: PropTypes.object,
 }
 
 module.exports = CommentsEdit

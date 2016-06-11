@@ -1,19 +1,20 @@
 import React, { PropTypes, Component } from 'react'
-import Actions from '../actions.js'
+
+import { Telescope } from 'nova-core'
 import { NovaForm } from 'nova-forms'
 import Comments from 'nova-comments'
 
 class CommentsNew extends Component {
 
   render() {
-
     let prefilledProps = { postId: this.props.postId }
 
     if (this.props.parentComment) {
+      const { parentComment } = this.props
       prefilledProps = Object.assign(prefilledProps, {
-        parentCommentId: this.props.parentComment._id,
-        // if parent comment has a topLevelCommentId use it; if it doesn't then it *is* the top level comment
-        topLevelCommentId: this.props.parentComment.topLevelCommentId || this.props.parentComment._id,
+        parentCommentId: parentComment._id,
+        // if parent comment has topLevelCommentId use it; if not then it *is* the top level comment
+        topLevelCommentId: parentComment.topLevelCommentId || parentComment._id
       })
     }
 
@@ -36,17 +37,17 @@ class CommentsNew extends Component {
 }
 
 CommentsNew.propTypes = {
-  postId: React.PropTypes.string.isRequired,
-  type: React.PropTypes.string, // "comment" or "reply"
-  parentComment: React.PropTypes.object, // if reply, the comment being replied to
-  parentCommentId: React.PropTypes.string, // if reply
-  topLevelCommentId: React.PropTypes.string, // if reply
-  successCallback: React.PropTypes.func, // a callback to execute when the submission has been successful
-  cancelCallback: React.PropTypes.func,
+  postId: PropTypes.string.isRequired,
+  type: PropTypes.string, // "comment" or "reply"
+  parentComment: PropTypes.object, // if reply, the comment being replied to
+  parentCommentId: PropTypes.string, // if reply
+  topLevelCommentId: PropTypes.string, // if reply
+  successCallback: PropTypes.func, // submission has succeeded
+  cancelCallback: PropTypes.func,
 }
 
 CommentsNew.contextTypes = {
-  currentUser: React.PropTypes.object,
+  currentUser: PropTypes.object,
 }
 
 module.exports = CommentsNew
