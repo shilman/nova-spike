@@ -1,7 +1,9 @@
 import React, { PropTypes, Component } from 'react';
 import moment from 'moment'
-import Telescope, { Meteor } from 'nova-core'
+import Telescope from 'nova-core'
 import Users from 'nova-users'
+
+import Actions from "../actions.js"
 
 class CommentsItem extends Component {
 
@@ -45,7 +47,7 @@ class CommentsItem extends Component {
   deleteComment() {
     const comment = this.props.comment;
     if (window.confirm(`Delete comment “${comment.body}”?`)) {
-      Meteor.call('comments.deleteById', comment._id, (error, result) => {
+      Actions.call('comments.deleteById', comment._id, (error, result) => {
         Messages.flash(`Comment “${comment.body}” deleted.`, "success");
         Events.track("comment deleted", {'_id': comment._id});
       });

@@ -1,5 +1,5 @@
 // import Avatar from 'meteor-avatar-core';
-import { Avatar } from 'meteor/nova:core';
+import { Avatar } from 'meteor/nova:core'
 
 // import { checkNpmVersions } from 'meteor/tmeasday:check-npm-versions';
 // checkNpmVersions({
@@ -11,6 +11,6 @@ import { Avatar } from 'meteor/nova:core';
 // });
 
 Avatar.setOptions({
-  "gravatarDefault": "mm",
-  "defaultImageUrl": "http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&f=y"
-});
+  gravatarDefault: 'mm',
+  defaultImageUrl: 'http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&f=y',
+})
