@@ -6,6 +6,7 @@ import Factory from '../../factories'
 import '../components.js'
 import CommentsItem from './CommentsItem.jsx'
 import CommentsEdit from './CommentsEdit.jsx'
+import CommentsNew from './CommentsNew.jsx'
 
 const itemCallbacks = {
   replyCallback: action('reply'),
@@ -42,4 +43,18 @@ storiesOf('CommentsEdit', module)
   })
   .add('default view', () => {
     return <CommentsEdit {...Factory.build('comments-edit-props', editCallbacks)} />
+  })
+
+storiesOf('CommentsNew', module)
+  .add('default view', () => {
+    const comment = Factory.build('comment')
+    return (
+      <CommentsNew
+        postId={comment.postId}
+        parentComment={comment}
+        successCallback={action('success')}
+        cancelCallback={action('cancel')}
+        type='reply'
+      />
+    )
   })
