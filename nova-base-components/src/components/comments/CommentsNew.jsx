@@ -1,39 +1,39 @@
-import React, { PropTypes, Component } from 'react';
-import Actions from '../actions.js';
-import { NovaForm } from "nova-forms";
-import Comments from "nova-comments";
+import React, { PropTypes, Component } from 'react'
+import Actions from '../actions.js'
+import { NovaForm } from 'nova-forms'
+import Comments from 'nova-comments'
 
 class CommentsNew extends Component {
 
   render() {
 
-    let prefilledProps = {postId: this.props.postId};
+    let prefilledProps = { postId: this.props.postId }
 
     if (this.props.parentComment) {
       prefilledProps = Object.assign(prefilledProps, {
         parentCommentId: this.props.parentComment._id,
         // if parent comment has a topLevelCommentId use it; if it doesn't then it *is* the top level comment
-        topLevelCommentId: this.props.parentComment.topLevelCommentId || this.props.parentComment._id
-      });
+        topLevelCommentId: this.props.parentComment.topLevelCommentId || this.props.parentComment._id,
+      })
     }
 
     return (
-      <div className="comments-new-form">
+      <div className='comments-new-form'>
         <NovaForm
           collection={Comments}
           currentUser={this.context.currentUser}
-          methodName="comments.new"
+          methodName='comments.new'
           prefilledProps={prefilledProps}
           successCallback={this.props.successCallback}
-          labelFunction={(fieldName)=>Telescope.utils.getFieldLabel(fieldName, Comments)}
-          layout="elementOnly"
-          cancelCallback={this.props.type === "reply" ? this.props.cancelCallback : null}
+          labelFunction={(fieldName) => Telescope.utils.getFieldLabel(fieldName, Comments)}
+          layout='elementOnly'
+          cancelCallback={this.props.type === 'reply' ? this.props.cancelCallback : null}
         />
       </div>
     )
   }
 
-};
+}
 
 CommentsNew.propTypes = {
   postId: React.PropTypes.string.isRequired,
@@ -42,11 +42,11 @@ CommentsNew.propTypes = {
   parentCommentId: React.PropTypes.string, // if reply
   topLevelCommentId: React.PropTypes.string, // if reply
   successCallback: React.PropTypes.func, // a callback to execute when the submission has been successful
-  cancelCallback: React.PropTypes.func
+  cancelCallback: React.PropTypes.func,
 }
 
 CommentsNew.contextTypes = {
-  currentUser: React.PropTypes.object
+  currentUser: React.PropTypes.object,
 }
 
-module.exports = CommentsNew;
+module.exports = CommentsNew

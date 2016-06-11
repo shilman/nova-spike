@@ -1,19 +1,19 @@
-import React, { PropTypes, Component } from 'react';
-import Actions from '../actions.js';
-import NovaForm from "nova-forms";
+import React, { PropTypes, Component } from 'react'
+import Actions from '../actions.js'
+import NovaForm from 'nova-forms'
 
 class CommentsEdit extends Component {
 
   render() {
     return (
-      <div className="comments-edit-form">
+      <div className='comments-edit-form'>
         <NovaForm
           collection={Comments}
           document={this.props.comment}
           currentUser={this.context.currentUser}
-          methodName="comments.edit"
+          methodName='comments.edit'
           successCallback={this.props.successCallback}
-          layout="elementOnly"
+          layout='elementOnly'
           cancelCallback={this.props.cancelCallback}
         />
       </div>
@@ -25,11 +25,11 @@ class CommentsEdit extends Component {
 CommentsEdit.propTypes = {
   comment: React.PropTypes.object.isRequired,
   successCallback: React.PropTypes.func,
-  cancelCallback: React.PropTypes.func
+  cancelCallback: React.PropTypes.func,
 }
 
 CommentsEdit.contextTypes = {
-  currentUser: React.PropTypes.object
+  currentUser: React.PropTypes.object,
 }
 
-module.exports = CommentsEdit;
+module.exports = CommentsEdit
