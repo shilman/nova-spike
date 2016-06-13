@@ -3,8 +3,8 @@ import { storiesOf, action } from '@kadira/storybook'
 import WithContext from 'react-with-context'
 
 // FIXME: should be part of forms package
-import Comments from 'nova-core'
-import NovaForm from 'nova-forms'
+import Comments from 'nova-comments'
+import {NovaForm, FormComponent} from 'nova-forms'
 
 import Factory from '../../factories'
 import '../components.js'

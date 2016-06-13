@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import Comments from 'nova-comments'
-import NovaForm from 'nova-forms'
+import { NovaForm } from 'nova-forms'
 
 class CommentsEdit extends Component {
   render() {
