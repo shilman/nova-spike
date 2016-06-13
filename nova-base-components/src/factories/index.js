@@ -43,4 +43,16 @@ Factory.define('comments-item-owner-props')
   .extend('comments-item-props')
   .attrs({ currentUser: () => Factory.build('user') })
 
+Factory.define('comments-item-editing')
+  .extend('comments-item-props')
+  .attrs({ showEdit: true })
+
+Factory.define('comments-item-replying')
+  .extend('comments-item-props')
+  .attrs({ showReply: true })
+
+Factory.define('comments-edit-props').attrs({
+  comment: () => Factory.build('comment'),
+})
+
 export default Factory
