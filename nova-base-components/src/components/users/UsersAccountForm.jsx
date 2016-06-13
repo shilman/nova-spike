@@ -1,17 +1,17 @@
-import React, { PropTypes, Component } from 'react';
-import Router from '../router.js';
-import { Button, FormControl } from 'react-bootstrap';
+import React, { PropTypes, Component } from 'react'
+import Router from '../router.js'
+import { Button, FormControl } from 'react-bootstrap'
 
-import { Accounts } from 'meteor/std:accounts-ui';
+import { Accounts } from 'meteor/std:accounts-ui'
 
 const UsersAccountForm = () => {
   return (
     <Accounts.ui.LoginForm />
-  ) 
-};
+  )
+}
 
-module.exports = UsersAccountForm;
-export default UsersAccountForm;
+module.exports = UsersAccountForm
+export default UsersAccountForm
 
 // customize Accounts.ui
 
@@ -19,33 +19,34 @@ Accounts.ui.config({
   passwordSignupFields: 'USERNAME_AND_EMAIL',
   onSignedInHook: () => {},
   onSignedOutHook: () => {},
-});
+})
 
 class AccountsButton extends Accounts.ui.Button {
-  render () {
-    const {label, href, type, disabled, className, onClick} = this.props;
+  render() {
+    const { label, href, type, disabled, className, onClick } = this.props
     if (type === 'link') {
-      return <a href={ href } className={ className } onClick={ onClick }>{ label }</a>;
+      return <a href={ href } className={ className } onClick={ onClick }>{ label }</a>
     }
-    return <Button 
-        bsStyle="primary"
-        className={ className }
-        type={ type } 
-        disabled={ disabled }
-        onClick={ onClick }>{ label }
-      </Button>;
+    return (<Button
+      bsStyle='primary'
+      className={ className }
+      type={ type }
+      disabled={ disabled }
+      onClick={ onClick }
+    >{ label }
+      </Button>)
   }
 }
 
 class AccountsField extends Accounts.ui.Field {
   render() {
-    const { id, hint, label, type = 'text', onChange, className = "field", defaultValue = "" } = this.props;
-    const { mount = true } = this.state;
+    const { id, hint, label, type = 'text', onChange, className = 'field', defaultValue = '' } = this.props
+    const { mount = true } = this.state
     return mount ? (
       <div className={ className }>
         <FormControl id={ id } type={ type } onChange={ onChange } placeholder={ hint } defaultValue={ defaultValue } />
       </div>
-    ) : null;
+    ) : null
   }
 }
 
@@ -89,7 +90,7 @@ class AccountsField extends Accounts.ui.Field {
 //   }
 // }
 
-Accounts.ui.Button = AccountsButton;
-Accounts.ui.Field = AccountsField;
+Accounts.ui.Button = AccountsButton
+Accounts.ui.Field = AccountsField
 // Accounts.ui.SocialButtons = AccountsSocialButtons;
 // Accounts.ui.PasswordOrService = AccountsPasswordOrService;

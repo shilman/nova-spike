@@ -1,24 +1,24 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Component } from 'react'
 import Router from '../router.js'
 
-import { Messages } from "meteor/nova:core";
+import { Messages } from 'nova-core'
 
-import NovaForm from "meteor/nova:forms";
+import NovaForm from 'nova-forms'
 
 const PostsNewForm = (props, context) => {
 
   return (
     <Telescope.components.CanCreatePost>
-      <div className="posts-new-form">
-        <NovaForm 
-          collection={Posts} 
+      <div className='posts-new-form'>
+        <NovaForm
+          collection={Posts}
           currentUser={context.currentUser}
-          methodName="posts.new"
-          successCallback={(post)=>{
-            Messages.flash("Post created.", "success");
-            Router.go('posts.single', post);
+          methodName='posts.new'
+          successCallback={(post) => {
+            Messages.flash('Post created.', 'success')
+            Router.go('posts.single', post)
           }}
-          labelFunction={(fieldName)=>Telescope.utils.getFieldLabel(fieldName, Posts)}
+          labelFunction={(fieldName) => Telescope.utils.getFieldLabel(fieldName, Posts)}
         />
       </div>
     </Telescope.components.CanCreatePost>
@@ -26,10 +26,10 @@ const PostsNewForm = (props, context) => {
 }
 
 PostsNewForm.contextTypes = {
-  currentUser: React.PropTypes.object
-};
+  currentUser: React.PropTypes.object,
+}
 
-PostsNewForm.displayName = "PostsNewForm";
+PostsNewForm.displayName = 'PostsNewForm'
 
-module.exports = PostsNewForm;
-export default PostsNewForm;
+module.exports = PostsNewForm
+export default PostsNewForm

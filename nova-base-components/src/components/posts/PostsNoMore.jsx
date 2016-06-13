@@ -1,7 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-const PostsNoMore = props => <p className="posts-no-more">No more posts.</p>
+const PostsNoMore = () => (
+  <p className='posts-no-more'>No more posts.</p>
+)
 
-PostsNoMore.displayName = "PostsNoMore";
+PostsNoMore.displayName = 'PostsNoMore'
 
-module.exports = PostsNoMore;
+export default PostsNoMore

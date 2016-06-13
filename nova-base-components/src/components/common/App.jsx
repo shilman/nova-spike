@@ -1,14 +1,14 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Component } from 'react'
 
-import { AppComposer } from "meteor/nova:core";
+import { AppComposer } from 'nova-core'
 
 class App extends Component {
 
   getChildContext() {
     return {
       currentUser: this.props.currentUser,
-      currentRoute: this.props.currentRoute
-    };
+      currentRoute: this.props.currentRoute,
+    }
   }
 
   render() {
@@ -22,15 +22,15 @@ class App extends Component {
 }
 
 App.propTypes = {
-  ready: React.PropTypes.bool,
-  currentUser: React.PropTypes.object,
-  currentRoute: React.PropTypes.object
+  ready: PropTypes.bool,
+  currentUser: PropTypes.object,
+  currentRoute: PropTypes.object,
 }
 
 App.childContextTypes = {
-  currentUser: React.PropTypes.object,
-  currentRoute: React.PropTypes.object
+  currentUser: PropTypes.object,
+  currentRoute: PropTypes.object,
 }
 
-module.exports = AppComposer(App);
-export default AppComposer(App);
+module.exports = AppComposer(App)
+export default AppComposer(App)

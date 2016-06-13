@@ -1,7 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-const PostsNoResults = props => <p className="posts-no-results">No posts to display.</p>
+const PostsNoResults = () => (
+  <p className='posts-no-results'>No posts to display.</p>
+)
 
-PostsNoResults.displayName = "PostsNoResults";
+PostsNoResults.displayName = 'PostsNoResults'
 
-module.exports = PostsNoResults;
+export default PostsNoResults

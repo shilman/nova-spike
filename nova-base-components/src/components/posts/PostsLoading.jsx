@@ -1,10 +1,12 @@
-import React from 'react';
+import React from 'react'
+import Telescope from 'nova-core'
 
-const PostsLoading = props => {
-  const Loading = Telescope.components.Loading;
-  return <div className="posts-load-more-loading"><Loading/></div>
-}
+const PostsLoading = () => (
+  <div className='posts-load-more-loading'>
+    <Telescope.components.Loading />
+  </div>
+)
 
-PostsLoading.displayName = "PostsLoading";
+PostsLoading.displayName = 'PostsLoading'
 
-module.exports = PostsLoading;
+export default PostsLoading

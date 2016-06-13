@@ -1,30 +1,30 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Component } from 'react'
 
 const CanCreatePost = (props, context) => {
 
-  const currentUser = context.currentUser;
+  const currentUser = context.currentUser
 
-  const children = props.children;
-  const UsersAccountForm = Telescope.components.UsersAccountForm;
+  const children = props.children
+  const UsersAccountForm = Telescope.components.UsersAccountForm
 
-  if (!currentUser){
+  if (!currentUser) {
     return (
-      <div className="log-in-message">
+      <div className='log-in-message'>
         <h3>Please Log In</h3>
-        <UsersAccountForm/>
+        <UsersAccountForm />
       </div>
     )
   } else if (Users.can.post(currentUser)) {
-    return children;
+    return children
   } else {
-    return <p>Sorry, you do not have permissions to post at this time</p>;
+    return <p>Sorry, you do not have permissions to post at this time</p>
   }
-};
+}
 
 CanCreatePost.contextTypes = {
-  currentUser: React.PropTypes.object
-};
+  currentUser: React.PropTypes.object,
+}
 
-CanCreatePost.displayName = "CanCreatePost";
+CanCreatePost.displayName = 'CanCreatePost'
 
-module.exports = CanCreatePost;
+module.exports = CanCreatePost

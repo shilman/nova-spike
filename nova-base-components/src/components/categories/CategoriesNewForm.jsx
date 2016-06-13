@@ -1,32 +1,29 @@
-import React, { PropTypes, Component } from 'react';
-import Router from '../router.js'
+import React, { PropTypes, Component } from 'react'
 
-import { Messages } from "meteor/nova:core";
-
-import NovaForm from "meteor/nova:forms";
+import { Messages } from 'nova-core'
+import { Categories } from 'nova-comments' //FIXME: temp
+import NovaForm from 'nova-forms'
 
 const CategoriesNewForm = (props, context) => {
-
   return (
-    <div className="categories-new-form">
-      <NovaForm 
-        collection={Categories} 
+    <div className='categories-new-form'>
+      <NovaForm
+        collection={Categories}
         currentUser={context.currentUser}
-        methodName="categories.new"
-        successCallback={(category)=>{
-          Messages.flash("Category created.", "success");
+        methodName='categories.new'
+        successCallback={(category) => {
+          Messages.flash('Category created.', 'success')
         }}
-        labelFunction={(fieldName)=>Telescope.utils.getFieldLabel(fieldName, Categories)}
+        labelFunction={(fieldName) => Telescope.utils.getFieldLabel(fieldName, Categories)}
       />
     </div>
   )
 }
 
-CategoriesNewForm.displayName = "CategoriesNewForm";
+CategoriesNewForm.displayName = 'CategoriesNewForm'
 
 CategoriesNewForm.contextTypes = {
-  currentUser: React.PropTypes.object
-};
+  currentUser: PropTypes.object,
+}
 
-module.exports = CategoriesNewForm;
-export default CategoriesNewForm;
+export default CategoriesNewForm

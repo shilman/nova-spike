@@ -1,20 +1,20 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Component } from 'react'
 
-const CanEditUser = ({user, userToEdit, children}) => {
-  if (!user){
-    return <p>Please log in.</p>;
+const CanEditUser = ({ user, userToEdit, children }) => {
+  if (!user) {
+    return <p>Please log in.</p>
   } else if (Users.can.edit(user, userToEdit)) {
-    return children;
+    return children
   } else {
-    return <p>Sorry, you do not have permissions to edit this user at this time</p>;
+    return <p>Sorry, you do not have permissions to edit this user at this time</p>
   }
-};
+}
 
 CanEditUser.propTypes = {
   user: React.PropTypes.object,
-  userToEdit: React.PropTypes.object
+  userToEdit: React.PropTypes.object,
 }
 
-CanEditUser.displayName = "CanEditUser";
+CanEditUser.displayName = 'CanEditUser'
 
-module.exports = CanEditUser;
+module.exports = CanEditUser

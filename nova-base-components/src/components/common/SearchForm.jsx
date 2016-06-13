@@ -1,55 +1,55 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Component } from 'react'
 import Router from '../router.js'
-import Formsy from 'formsy-react';
-import FRC from 'formsy-react-components';
+import Formsy from 'formsy-react'
+import FRC from 'formsy-react-components'
 
-const Input = FRC.Input;
+const Input = FRC.Input
 
 // see: http://stackoverflow.com/questions/1909441/jquery-keyup-delay
-const delay = (function(){
-  var timer = 0;
-  return function(callback, ms){
-    clearTimeout (timer);
-    timer = setTimeout(callback, ms);
-  };
-})();
+const delay = (function () {
+  var timer = 0
+  return function (callback, ms) {
+    clearTimeout(timer)
+    timer = setTimeout(callback, ms)
+  }
+})()
 
-class SearchForm extends Component{
+class SearchForm extends Component {
 
   constructor() {
-    super();
-    this.search = this.search.bind(this);
+    super()
+    this.search = this.search.bind(this)
   }
 
   search(data) {
 
-    if (Router.getRouteName() !== "posts.list") {
-      Router.go("posts.list");
-    }
-    
-    if (data.searchQuery === '') {
-      data.searchQuery = null;
+    if (Router.getRouteName() !== 'posts.list') {
+      Router.go('posts.list')
     }
 
-    delay(function(){
-      Router.setQueryParams({query: data.searchQuery});
-    }, 700 );
+    if (data.searchQuery === '') {
+      data.searchQuery = null
+    }
+
+    delay(function () {
+      Router.setQueryParams({ query: data.searchQuery })
+    }, 700)
 
   }
 
   render() {
 
-    const currentQuery = this.context.currentRoute.queryParams.query;
+    const currentQuery = this.context.currentRoute.queryParams.query
 
     return (
-      <div className="search-form">
+      <div className='search-form'>
         <Formsy.Form onChange={this.search}>
           <Input
-            name="searchQuery"
+            name='searchQuery'
             value={currentQuery}
             placeholder={this.props.labelText}
-            type="text"
-            layout="elementOnly"
+            type='text'
+            layout='elementOnly'
           />
         </Formsy.Form>
       </div>
@@ -58,17 +58,17 @@ class SearchForm extends Component{
 }
 
 SearchForm.propTypes = {
-  labelText: React.PropTypes.string
+  labelText: React.PropTypes.string,
 }
 
 SearchForm.defaultProps = {
-  labelText: "Search"
-};
+  labelText: 'Search',
+}
 
 SearchForm.contextTypes = {
   currentRoute: React.PropTypes.object,
-  currentUser: React.PropTypes.object
+  currentUser: React.PropTypes.object,
 }
 
-module.exports = SearchForm;
-export default SearchForm;
+module.exports = SearchForm
+export default SearchForm

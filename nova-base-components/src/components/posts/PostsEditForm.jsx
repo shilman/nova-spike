@@ -1,34 +1,34 @@
-import React, { PropTypes, Component } from 'react';
-import NovaForm from "meteor/nova:forms";
+import React, { PropTypes, Component } from 'react'
+import NovaForm from 'nova-forms'
 
-import SmartContainers from "meteor/utilities:react-list-container";
-const DocumentContainer = SmartContainers.DocumentContainer;
+import SmartContainers from 'meteor/utilities:react-list-container'
+const DocumentContainer = SmartContainers.DocumentContainer
 
-import { Messages } from "meteor/nova:core";
+import { Messages } from 'nova-core'
 
-import Actions from "../actions.js";
+import Actions from '../actions.js'
 
-class PostsEditForm extends Component{
+class PostsEditForm extends Component {
 
   constructor() {
-    super();
-    this.deletePost = this.deletePost.bind(this);
+    super()
+    this.deletePost = this.deletePost.bind(this)
   }
 
   deletePost() {
-    const post = this.props.post;
-    if (window.confirm(`Delete post “${post.title}”?`)) { 
+    const post = this.props.post
+    if (window.confirm(`Delete post “${post.title}”?`)) {
       Actions.call('posts.deleteById', post._id, (error, result) => {
-        Messages.flash(`Post “${post.title}” deleted.`, "success");
-        Events.track("post deleted", {'_id': post._id});
-      });
+        Messages.flash(`Post “${post.title}” deleted.`, 'success')
+        Events.track('post deleted', { '_id': post._id })
+      })
     }
   }
 
   renderAdminArea() {
     return (
-      <div className="posts-edit-form-admin">
-        <div className="posts-edit-form-id">ID: {this.props.post._id}</div>
+      <div className='posts-edit-form-admin'>
+        <div className='posts-edit-form-id'>ID: {this.props.post._id}</div>
         <Telescope.components.PostsStats post={this.props.post} />
       </div>
     )
@@ -36,39 +36,39 @@ class PostsEditForm extends Component{
 
   render() {
 
-  
+
     return (
-      <div className="posts-edit-form">
-        {Users.is.admin(this.context.currentUser) ?  this.renderAdminArea() : null}
-        <DocumentContainer 
-          collection={Posts} 
-          publication="posts.single" 
-          selector={{_id: this.props.post._id}}
-          terms={{_id: this.props.post._id}}
+      <div className='posts-edit-form'>
+        {Users.is.admin(this.context.currentUser) ? this.renderAdminArea() : null}
+        <DocumentContainer
+          collection={Posts}
+          publication='posts.single'
+          selector={{ _id: this.props.post._id }}
+          terms={{ _id: this.props.post._id }}
           joins={Posts.getJoins()}
           component={NovaForm}
           componentProps={{
             // note: the document prop will be passed from DocumentContainer
             collection: Posts,
             currentUser: this.context.currentUser,
-            methodName: "posts.edit",
-            labelFunction: fieldName => Telescope.utils.getFieldLabel(fieldName, Posts)
+            methodName: 'posts.edit',
+            labelFunction: fieldName => Telescope.utils.getFieldLabel(fieldName, Posts),
           }}
         />
-        <hr/>
-        <a onClick={this.deletePost} className="delete-post-link"><Telescope.components.Icon name="close"/> Delete Post</a>
+        <hr />
+        <a onClick={this.deletePost} className='delete-post-link'><Telescope.components.Icon name='close' /> Delete Post</a>
       </div>
     )
   }
 }
 
 PostsEditForm.propTypes = {
-  post: React.PropTypes.object.isRequired
+  post: React.PropTypes.object.isRequired,
 }
 
 PostsEditForm.contextTypes = {
-  currentUser: React.PropTypes.object
-};
+  currentUser: React.PropTypes.object,
+}
 
-module.exports = PostsEditForm;
-export default PostsEditForm;
+module.exports = PostsEditForm
+export default PostsEditForm

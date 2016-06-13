@@ -1,5 +1,5 @@
 // import Avatar from 'meteor-avatar-core';
-import { Avatar } from 'meteor/nova:core'
+import { Avatar } from 'nova-core'
 
 // import { checkNpmVersions } from 'meteor/tmeasday:check-npm-versions';
 // checkNpmVersions({
