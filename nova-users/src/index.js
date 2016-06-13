@@ -1,3 +1,5 @@
+import { _ } from 'underscore'
+
 const Users = {};
 
 //FIXME: helpers

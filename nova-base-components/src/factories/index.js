@@ -54,6 +54,55 @@ Factory.define('comment-with-children')
     ],
   })
 
+Factory.define('message').attrs({
+  content: 'message content',
+})
+
+Factory.define('error-message')
+  .extend('message')
+  .attrs({ type: 'error' })
+
+Factory.define('post').attrs({
+  _id: '0',
+  score: 10,
+  baseScore: 0,
+  title: 'postTitle',
+  url: 'http://telescopeapp.org',
+  thumbnailUrl: '/telescope.png',
+  user: () => Factory.build('user'),
+  upvoters: [],
+  downvoters: [],
+  categoriesArray: () => [Factory.build('category'), Factory.build('category1')],
+  commentersArray: () => [Factory.build('user'), Factory.build('user1')],
+  commentCount: 3,
+  upvotes: 0,
+  clickCount: 10,
+  viewCount: 100,
+})
+
+Factory.define('post-no-score')
+  .extend('post')
+  .attrs({
+    score: 0,
+  })
+
+Factory.define('route').attrs({
+  route: { name: 'routeName' },
+  queryParams: { cat: 'cat-slug' },
+})
+
+Factory.define('category')
+  .attrs({
+    _id: '0',
+    name: 'categoryName',
+    slug: 'category-slug',
+  })
+
+Factory.define('category1')
+  .extend('category')
+  .attrs({ _id: '1', name: 'categoryName1' })
+
+
 // ------------------------------------- //
 // Components
 // ------------------------------------- //
@@ -114,5 +163,17 @@ Factory.define('comments-node-props')
 Factory.define('comments-node-nested-props')
   .extend('comments-node-props')
   .attrs({ comment: Factory.build('comment-with-children') })
+
+Factory.define('category-props')
+  .attrs({
+    key: 0,
+    category: () => Factory.build('category'),
+    currentCategorySlug: 'category-slug', // FIXME: ??
+  })
+
+Factory.define('categories-list-props')
+  .attrs({
+    categories: () => [Factory.build('category'), Factory.build('category1')],
+  })
 
 export default Factory

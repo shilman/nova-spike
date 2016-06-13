@@ -26,6 +26,7 @@ Telescope.getComponent = (name) => {
 
 Telescope.utils = {
   getFieldLabel: () => 'label',
+  capitalise: (str) => str,
 }
 
 /**

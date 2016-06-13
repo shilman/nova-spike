@@ -34,3 +34,6 @@ be cataloging major work items here.
 - [ ] nova-base-styles temporarily (?) merged into nova-base-components
 - [ ] nova-forms flashes
 - [ ] linting + commit hooks
+- [ ] Pass Messages.flash as context messageCallback (see Vote.jsx)
+- [ ] Route functions / links as callbacks
+- [ ] PostsItem child rendering is broken
