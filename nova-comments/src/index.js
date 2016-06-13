@@ -1,6 +1,6 @@
 const Comments = {
   getEditableFields: () => [],
-  getInsertableFields: () => []
+  getInsertableFields: () => [],
 }
 
 export default Comments
