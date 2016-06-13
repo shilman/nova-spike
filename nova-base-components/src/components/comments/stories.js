@@ -4,13 +4,15 @@ import WithContext from 'react-with-context'
 
 // FIXME: should be part of forms package
 import Comments from 'nova-comments'
-import {NovaForm, FormComponent} from 'nova-forms'
+import { NovaForm, FormComponent } from 'nova-forms'
 
 import Factory from '../../factories'
 import '../components.js'
 import CommentsItem from './CommentsItem.jsx'
 import CommentsEdit from './CommentsEdit.jsx'
 import CommentsNew from './CommentsNew.jsx'
+import CommentsList from './CommentsList.jsx'
+import CommentsNode from './CommentsNode.jsx'
 
 const itemCallbacks = {
   replyCallback: action('reply'),
@@ -61,6 +63,35 @@ storiesOf('CommentsNew', module)
         type='reply'
       />
     )
+  })
+
+const loadCallbacks = {
+  loadMore: action('load more'),
+}
+
+storiesOf('CommentsList', module)
+  .add('default list', () => {
+    return <CommentsList {...Factory.build('comments-list-default-props', loadCallbacks)} />
+  })
+  .add('has-more list', () => {
+    return <CommentsList {...Factory.build('comments-list-has-more-props', loadCallbacks)} />
+  })
+  .add('loading more list', () => {
+    return <CommentsList {...Factory.build('comments-list-loading-more-props', loadCallbacks)} />
+  })
+  .add('empty list', () => {
+    return <CommentsList {...Factory.build('comments-list-empty-props', loadCallbacks)} />
+  })
+  .add('loading', () => {
+    return <CommentsList {...Factory.build('comments-list-loading-props', loadCallbacks)} />
+  })
+
+storiesOf('CommentsNode', module)
+  .add('single comment', () => {
+    return <CommentsNode {...Factory.build('comments-node-props')} />
+  })
+  .add('nested comment', () => {
+    return <CommentsNode {...Factory.build('comments-node-nested-props')} />
   })
 
 // FIXME: should be part of forms package

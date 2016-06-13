@@ -23,8 +23,36 @@ Factory.define('comment').attrs({
   userId: '0', // FIXME: chained from user()
   body: 'commentBody',
   htmlBody: 'commentHtmlBody',
+  childrenResults: null,
   user: () => Factory.build('user'),
 })
+
+Factory.define('comment1')
+  .extend('comment')
+  .attrs({
+    _id: '1',
+    body: 'commentBody1',
+    htmlBody: 'commentHtmlBody1',
+    user: () => Factory.build('user1'),
+  })
+
+Factory.define('comment2')
+  .extend('comment')
+  .attrs({
+    _id: '2',
+    body: 'commentBody2',
+    htmlBody: 'commentHtmlBody2',
+    user: () => Factory.build('user2'),
+  })
+
+Factory.define('comment-with-children')
+  .extend('comment')
+  .attrs({
+    childrenResults: () => [
+      Factory.build('comment1'),
+      Factory.build('comment2'),
+    ],
+  })
 
 // ------------------------------------- //
 // Components
@@ -54,5 +82,37 @@ Factory.define('comments-item-replying')
 Factory.define('comments-edit-props').attrs({
   comment: () => Factory.build('comment'),
 })
+
+Factory.define('comments-list-default-props').attrs({
+  results: () => [Factory.build('comment'), Factory.build('comment1')],
+  currentUser: () => Factory.build('user2'),
+  hasMore: false,
+  ready: true,
+  count: 2,
+  totalCount: 2,
+})
+
+Factory.define('comments-list-has-more-props')
+  .extend('comments-list-default-props')
+  .attrs({ hasMore: true, totalCount: 4 })
+
+Factory.define('comments-list-loading-more-props')
+  .extend('comments-list-has-more-props')
+  .attrs({ ready: false })
+
+Factory.define('comments-list-empty-props')
+  .extend('comments-list-default-props')
+  .attrs({ results: [], count: 0, totalCount: 0 })
+
+Factory.define('comments-list-loading-props')
+  .extend('comments-list-empty-props')
+  .attrs({ ready: false })
+
+Factory.define('comments-node-props')
+  .extend('comments-item-props')
+
+Factory.define('comments-node-nested-props')
+  .extend('comments-node-props')
+  .attrs({ comment: Factory.build('comment-with-children') })
 
 export default Factory

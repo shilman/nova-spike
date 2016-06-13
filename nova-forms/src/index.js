@@ -5,4 +5,5 @@ import FormComponent from './FormComponent'
 // FIXME: fill this in?!
 // const NovaForm = () => (<div className='nova-form' />)
 
+export default NovaForm
 export { NovaForm, FormComponent }
