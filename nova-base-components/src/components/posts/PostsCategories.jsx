@@ -18,4 +18,5 @@ PostsCategories.propTypes = {
   post: PropTypes.object.isRequired,
 }
 
-export default PostsCategories
+module.exports = PostsCategories;
+export default PostsCategories;

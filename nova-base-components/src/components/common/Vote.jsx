@@ -60,12 +60,12 @@ class Vote extends Component {
 
 Vote.propTypes = {
   post: PropTypes.object.isRequired, // the current post
-  voteCallback: PropTypes.func.isRequired,
+  voteCallback: PropTypes.func,
 }
 
 Vote.contextTypes = {
   currentUser: PropTypes.object,
-  messageCallback: PropTypes.func.isRequired,
+  messageCallback: PropTypes.func,
 }
 
 module.exports = Vote

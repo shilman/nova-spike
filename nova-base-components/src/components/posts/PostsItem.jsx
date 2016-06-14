@@ -9,7 +9,6 @@ import Users from 'nova-users'
 class PostsItem extends Component {
 
   renderCategories() {
-    console.log("cats", this.props.post.categoriesArray)
     return this.props.post.categoriesArray
       ? <Telescope.components.PostsCategories post={this.props.post} />
       : ''
@@ -22,11 +21,12 @@ class PostsItem extends Component {
   }
 
   renderActions() {
-    const component = (
-      <ModalTrigger title='Edit Post' component={<a className='posts-action-edit'>Edit</a>}>
-        <Telescope.components.PostsEditForm post={this.props.post} />
-      </ModalTrigger>
-    )
+    const component = <a href="#">Edit</a>
+    // const component = (
+    //   <ModalTrigger title='Edit Post' component={<a className='posts-action-edit'>Edit</a>}>
+    //     <Telescope.components.PostsEditForm post={this.props.post} />
+    //   </ModalTrigger>
+    // )
 
     return (
       <div className='post-actions'>
@@ -54,7 +54,7 @@ class PostsItem extends Component {
 
           <h3 className='posts-item-title'>
             <a className='posts-item-title-link' href={Posts.getLink(post)} target={Posts.getLinkTarget(post)}>{post.title}</a>
-            {/* FIXME: this.renderCategories() */}
+            {this.renderCategories()}
           </h3>
 
           <div className='posts-item-meta'>
@@ -63,12 +63,12 @@ class PostsItem extends Component {
             <div className='posts-item-comments'><a href={Posts.getPageUrl(post)}>{post.commentCount}&nbsp;comments</a></div>
 
             {(this.context.currentUser && this.context.currentUser.isAdmin) ? <Telescope.components.PostsStats post={post} /> : null}
-            {/* FIXME: this.renderActions() */}
+            {this.renderActions()}
           </div>
 
         </div>
 
-        {/* FIXME: this.renderCommenters() */}
+        {this.renderCommenters()}
       </div>
     )
   }

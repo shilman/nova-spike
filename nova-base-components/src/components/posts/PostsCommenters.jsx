@@ -27,4 +27,5 @@ PostsCommenters.propTypes = {
   post: PropTypes.object.isRequired,
 }
 
+module.exports = PostsCommenters;
 export default PostsCommenters
