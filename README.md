@@ -27,13 +27,21 @@ This is a temporary repository, and will be removed as soon as it is mature
 enough to be merged back into to the main Telescope repo. In the meantime, I'll
 be cataloging major work items here.
 
+Miscellaneous notes:
 - [ ] Style should be updated to render properly in storybook (how?)
 - [ ] Meteor references should be removed
 - [ ] Users completely stubbed out
-- [ ] nova-forms completely stubbed out
+- [ ] nova-forms completely stubbed out (and broken)
 - [ ] nova-base-styles temporarily (?) merged into nova-base-components
-- [ ] nova-forms flashes
-- [ ] linting + commit hooks
+- [ ] nova-forms flashes should not depend on telescope
+- [ ] linting + linting settings + commit hooks
 - [ ] Pass Messages.flash as context messageCallback (see Vote.jsx)
-- [ ] Route functions / links as callbacks
+- [ ] Route functions / links as callbacks?
 - [ ] PostsItem child rendering is broken
+
+Top-level:
+- [ ] nova-forms should be standalone
+- [ ] nova-base-components should depend on:
+  - nova-forms
+  - some collection utilities (e.g. `Posts.getLinkTarget`), but NOT on meteor
+- [ ] the code that got extracted out of the components (e.g. Meteor.call('xxx')) needs a new home

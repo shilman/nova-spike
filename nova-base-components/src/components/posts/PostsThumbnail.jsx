@@ -14,4 +14,5 @@ PostsThumbnail.propTypes = {
   post: PropTypes.object.isRequired,
 }
 
+module.exports = PostsThumbnail
 export default PostsThumbnail

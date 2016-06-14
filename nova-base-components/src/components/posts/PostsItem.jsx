@@ -48,7 +48,7 @@ class PostsItem extends Component {
         </div>
 
 
-        {/* FIXME: post.thumbnailUrl ? <Telescope.components.PostsThumbnail post={post} /> : null*/}
+        {post.thumbnailUrl ? <Telescope.components.PostsThumbnail post={post} /> : null}
 
         <div className='posts-item-content'>
 
