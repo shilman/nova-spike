@@ -28,20 +28,29 @@ enough to be merged back into to the main Telescope repo. In the meantime, I'll
 be cataloging major work items here.
 
 Miscellaneous notes:
-- [ ] Style should be updated to render properly in storybook (how?)
-- [ ] Meteor references should be removed
-- [ ] Users completely stubbed out
-- [ ] nova-forms completely stubbed out (and broken)
-- [ ] nova-base-styles temporarily (?) merged into nova-base-components
-- [ ] nova-forms flashes should not depend on telescope
-- [ ] linting + linting settings + commit hooks
-- [ ] Pass Messages.flash as context messageCallback (see Vote.jsx)
-- [ ] Route functions / links as callbacks?
-- [ ] PostsItem child rendering is broken
+- [x] Style should be updated to render properly in storybook (how?)
+- [x] Meteor references should be removed
+- [x] Users completely stubbed out
+- [x] nova-forms completely stubbed out (and broken)
+- [x] nova-base-styles temporarily (?) merged into nova-base-components
+- [x] nova-forms flashes should not depend on telescope
+- [x] linting + linting settings + commit hooks
+- [x] Pass Messages.flash as context messageCallback (see Vote.jsx)
+- [x] Route functions / links as callbacks?
+- [x] PostsItem child rendering is broken
 
 Top-level:
-- [ ] nova-forms should be standalone
-- [ ] nova-base-components should depend on:
+- [x] nova-forms should be standalone
+  - meteor version validates, NPM version just displays
+  - if !SimpleSchema console.log("npm add simple-schema")
+- [x] nova-base-components should depend on:
   - nova-forms
   - some collection utilities (e.g. `Posts.getLinkTarget`), but NOT on meteor
-- [ ] the code that got extracted out of the components (e.g. Meteor.call('xxx')) needs a new home
+    - => nova-helpers?
+    - => Posts = typeof Mongo !== "undefined" ? new Mongo.Collection("posts") : {};
+- [x] the code that got extracted out of the components (e.g. Meteor.call('xxx')) needs a new home
+  - Actions => this.context.actions.
+  - Events => this.context.events.
+  - Messages => ...
+  - App.jsx 
+- [x] lerna.io package management?

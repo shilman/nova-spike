@@ -23,5 +23,9 @@
     "underscore": "^1.8.3"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.13.0",
+    "nova-users": "^0.0.0"
+  }
 }
