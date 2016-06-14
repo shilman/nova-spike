@@ -97,7 +97,6 @@ class CategoriesList extends Component {
           {
             categories && categories.length > 0
             ? categories.map((category, index) => {
-              console.log("catxx", category);
               return <Telescope.components.Category
                 key={index}
                 category={category}

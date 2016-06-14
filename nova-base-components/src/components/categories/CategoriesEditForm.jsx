@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 
 import NovaForm from 'nova-forms'
-import { Categories } from 'nova-comments' //fIXME
+import Categories from 'nova-categories'
 import Telescope, { Messages } from 'nova-core'
 
 import Actions from '../actions.js'

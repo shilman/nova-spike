@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { Posts } from 'nova-comments'
+import Posts from 'nova-posts'
 
 const PostsThumbnail = ({ post }) => {
   return (

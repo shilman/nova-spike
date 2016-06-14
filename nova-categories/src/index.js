@@ -1,6 +1,6 @@
-const Comments = {
+const Categories = {
   getEditableFields: () => [],
   getInsertableFields: () => [],
 }
 
-export default Comments
+export default Categories

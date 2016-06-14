@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 
 import { Messages } from 'nova-core'
-import { Categories } from 'nova-comments' //FIXME: temp
+import Categories from 'nova-categories' //FIXME: temp
 import NovaForm from 'nova-forms'
 
 const CategoriesNewForm = (props, context) => {

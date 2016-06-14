@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import Telescope from 'nova-core'
-import { Posts } from 'nova-comments'
+import Posts from 'nova-posts'
 
 const PostsCommenters = ({ post }) => {
   return (

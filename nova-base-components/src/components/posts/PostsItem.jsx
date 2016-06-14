@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap'
 import moment from 'moment'
 
 import Telescope, { ModalTrigger } from 'nova-core'
-import { Posts } from 'nova-comments'
+import Posts from 'nova-posts'
 import Users from 'nova-users'
 
 class PostsItem extends Component {
@@ -40,9 +40,6 @@ class PostsItem extends Component {
 
     let postClass = 'posts-item'
     if (post.sticky) postClass += ' posts-sticky'
-
-    console.log('post', post)
-    // console.log(post.user)
 
     return (
       <div className={postClass}>

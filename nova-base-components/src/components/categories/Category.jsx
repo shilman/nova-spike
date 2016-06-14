@@ -18,9 +18,7 @@ class Category extends Component {
   }
 
   render() {
-
     const { category, index, currentCategorySlug } = this.props
-    console.log('cat', category)
 
     const categoryClass = classNames('category-menu-item', 'dropdown-item', { 'category-active': currentCategorySlug === category.slug })
 
