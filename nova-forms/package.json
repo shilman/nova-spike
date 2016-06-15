@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "prepublish": ". ./.scripts/prepublish.sh",
+    "prepublish:watch": "watch 'npm run prepublish' src",
     "lint": "eslint src/**/*.js[x]",
     "lintfix": "npm run lint -- --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,7 +26,8 @@
     "eslint-plugin-jsx-a11y": "^0.6.2",
     "eslint-plugin-react": "^5.1.1",
     "react-dom": "^15.1.0",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "watch": "^0.18.0"
   },
   "peerDependencies": {
     "react": "^0.14.7 || ^15.0.0"
