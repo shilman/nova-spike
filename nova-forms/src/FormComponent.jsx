@@ -3,7 +3,6 @@ import Formsy from 'formsy-react'
 import FRC from 'formsy-react-components'
 
 import DateTime from './DateTime'
-
 import Utils from './utils.js'
 
 const Checkbox = FRC.Checkbox
@@ -34,11 +33,8 @@ class FormComponent extends Component {
 
     // if control is a React component, use it
     if (typeof this.props.control === 'function') {
-
       return <this.props.control {...properties} />
-
     } else { // else pick a predefined component
-
       switch (this.props.control) {
         case 'text':
           return <Input {...properties} type='text' />
@@ -58,26 +54,24 @@ class FormComponent extends Component {
         default:
           return <Input {...properties} type='text' />
       }
-
     }
   }
 
   render() {
     return <div className={'input-' + this.props.name}>{this.renderComponent()}</div>
   }
-
 }
 
 FormComponent.propTypes = {
-  name: React.PropTypes.string,
-  label: React.PropTypes.string,
-  value: React.PropTypes.any,
-  prefilledValue: React.PropTypes.any,
-  options: React.PropTypes.any,
-  control: React.PropTypes.any,
-  datatype: React.PropTypes.any,
-  disabled: React.PropTypes.bool,
-  updateCurrentValue: React.PropTypes.func,
+  name: PropTypes.string,
+  label: PropTypes.string,
+  value: PropTypes.any,
+  prefilledValue: PropTypes.any,
+  options: PropTypes.any,
+  control: PropTypes.any,
+  datatype: PropTypes.any,
+  disabled: PropTypes.bool,
+  updateCurrentValue: PropTypes.func,
 }
 
 export default FormComponent
@@ -90,12 +84,11 @@ import ComponentMixin from './component'
 import Row from './row'
 
 const CheckboxGroup = React.createClass({
-
   mixins: [Formsy.Mixin, ComponentMixin],
 
   propTypes: {
-    name: React.PropTypes.string.isRequired,
-    options: React.PropTypes.array.isRequired,
+    name: PropTypes.string.isRequired,
+    options: PropTypes.array.isRequired,
   },
 
   getDefaultProps: function () {
@@ -105,10 +98,14 @@ const CheckboxGroup = React.createClass({
     }
   },
 
+  refName(key) {
+    return `_element-${key}`
+  },
+
   changeCheckbox: function () {
     var value = []
     this.props.options.forEach(function (option, key) {
-      if (this.refs['element-' + key].checked) {
+      if (this[this.refName(key)].checked) {
         value.push(option.value)
       }
 
@@ -123,40 +120,38 @@ const CheckboxGroup = React.createClass({
       var checked = (_this.getValue().indexOf(checkbox.value) !== -1)
       var disabled = _this.isFormDisabled() || checkbox.disabled || _this.props.disabled
       return (
-                <div className='checkbox' key={key}>
-                    <label>
-                        <input
-                          ref={'element-' + key}
-                          checked={checked}
-                          type='checkbox'
-                          value={checkbox.value}
-                          onChange={_this.changeCheckbox}
-                          disabled={disabled}
-                        /> {checkbox.label}
-                    </label>
-                </div>
-            )
+        <div className='checkbox' key={key}>
+          <label>
+            <input
+              ref={(c) => this[this.refName(key)] = c}
+              checked={checked}
+              type='checkbox'
+              value={checkbox.value}
+              onChange={_this.changeCheckbox}
+              disabled={disabled}
+            /> {checkbox.label}
+          </label>
+        </div>
+      )
     })
     return controls
   },
 
   render: function () {
-
     if (this.getLayout() === 'elementOnly') {
       return (
-                <div>{this.renderElement()}</div>
-            )
+        <div>{this.renderElement()}</div>
+      )
     }
 
     return (
-            <Row
-              {...this.getRowProperties()}
-              fakeLabel
-            >
-                {this.renderElement()}
-                {this.renderHelp()}
-                {this.renderErrorMessage()}
-            </Row>
-        )
+      <Row
+        {...this.getRowProperties()}
+        fakeLabel>
+        {this.renderElement()}
+        {this.renderHelp()}
+        {this.renderErrorMessage()}
+      </Row>
+    )
   },
 })

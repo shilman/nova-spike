@@ -165,7 +165,7 @@ class NovaForm extends Component {
       this.clearErrors()
 
       // reset form if this is a new document form
-      if (this.getFormType() === 'new') this.refs.form.reset()
+      if (this.getFormType() === 'new') this._form.reset()
 
       // run success callback if it exists
       if (this.props.successCallback) this.props.successCallback(document)
@@ -275,7 +275,7 @@ class NovaForm extends Component {
         <Formsy.Form
           onSubmit={this.submitForm}
           disabled={this.state.disabled}
-          ref='form'
+          ref={(c) => this._form = c}
         >
           {this.renderErrors()}
           {fields.map(field =>

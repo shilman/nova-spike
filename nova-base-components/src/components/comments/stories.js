@@ -111,22 +111,3 @@ storiesOf('NovaForm', module)
       />
     )
   })
-
-storiesOf('FormComponent', module)
-  .add('text input', () => {
-    const field = {
-      control: "text",
-      datatype: String,
-      label: "Title",
-      layout: undefined,
-      name: "title",
-      value: "testValue",
-    }
-    return (
-      <FormComponent
-        key={field.name}
-        {...field}
-        updateCurrentValue={action("update")}
-      />
-    )
-  })
