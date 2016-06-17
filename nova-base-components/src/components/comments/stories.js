@@ -4,7 +4,7 @@ import WithContext from 'react-with-context'
 
 // FIXME: should be part of forms package
 import Comments from 'nova-comments'
-import { NovaForm, FormComponent } from 'nova-forms'
+import { NovaForm, XForm } from 'nova-forms'
 
 import Factory from '../../factories'
 import '../components.js'
@@ -95,6 +95,13 @@ storiesOf('CommentsNode', module)
   })
 
 // FIXME: should be part of forms package
+storiesOf('XForm', module)
+  .add('default', () => {
+    return (
+      <XForm />
+    )
+  })
+
 storiesOf('NovaForm', module)
   .add('comment edit', () => {
     const comment = Factory.build('comment')
