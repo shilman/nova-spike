@@ -1,8 +1,9 @@
 import React from 'react'
 
+let _x = null
 const XFormComponent = () => (
   <div className='xform-component'>
-    <div>xcomp</div>
+    <div ref={(c) => _x = c}>xcomp</div>
   </div>
 )
 
