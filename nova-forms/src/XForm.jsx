@@ -3,7 +3,7 @@ import XFormComponent from './XFormComponent'
 
 const XForm = () => (
   <div className='xform'>
-    <div ref='ref'>testing</div>
+    <div>testing</div>
     <XFormComponent />
     <XFormComponent />
     <XFormComponent />
