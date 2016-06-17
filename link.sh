@@ -1,17 +1,25 @@
 #!/bin/bash
 
-cd nova-core && npm link && cd ..
-cd nova-users && npm link && cd ..
-cd nova-forms && npm link && cd ..
-cd nova-comments && npm link && cd ..
-cd nova-categories && npm link && cd ..
-cd nova-posts && npm link && cd ..
+PACKAGES=(nova-core nova-forms nova-comments nova-categories nova-users)
 
-cd nova-base-components
-npm link nova-core
-npm link nova-users
-npm link nova-forms
-npm link nova-comments
-npm link nova-categories
+echo "Cleaning packages"
+for pkg in ${PACKAGES[@]}; do
+  rm -rf "$pkg/node_modules"
+done
+
+echo "Linking globally"
+for pkg in ${PACKAGES[@]}; do
+  cd $pkg && npm link && cd ..
+done
+
+echo "Linking posts"
+cd nova-posts && rm -rf node_modules && npm link nova-users && npm link && cd ..
+
+echo "Linking components"
+cd nova-base-components && rm -rf node_modules
+for pkg in ${PACKAGES[@]}; do
+  npm link $pkg
+done
 npm link nova-posts
+npm install
 cd ..

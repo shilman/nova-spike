@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import ContextPasser from './ContextPasser.jsx'
+import ContextPasser from './ContextPasser'
 import { Modal } from 'react-bootstrap';
 // import Modal from 'react-modal';
 

@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import Formsy from 'formsy-react'
 import { Button } from 'react-bootstrap'
 import { _ } from 'underscore'
-import { Meteor } from 'nova-core'
+//import { Meteor } from 'nova-core'
 
 import FormComponent from './FormComponent'
 import Utils from './utils.js'
@@ -194,7 +194,7 @@ class NovaForm extends Component {
       }
 
       // call method with new document
-      Meteor.call(this.props.methodName, document, this.methodCallback)
+      //FIXME Meteor.call(this.props.methodName, document, this.methodCallback)
     } else { // edit document form
       const document = this.getDocument()
 
@@ -209,8 +209,65 @@ class NovaForm extends Component {
       const modifier = { $set: set }
       if (!_.isEmpty(unset)) modifier.$unset = unset
       // call method with _id of document being edited and modifier
-      Meteor.call(this.props.methodName, document._id, modifier, this.methodCallback)
+      //FIXME Meteor.call(this.props.methodName, document._id, modifier, this.methodCallback)
     }
+  }
+
+  buildFieldStub() {
+    return {
+      control: 'textarea',
+      datatype: String,
+      label: 'Body',
+      layout: 'elementOnly',
+      name: 'body',
+      value: '',
+    }
+  }
+
+  buildField(fieldName) {
+    // get schema for the current field
+    const fieldSchema = this.props.collection.simpleSchema()._schema[fieldName]
+    fieldSchema.name = fieldName
+
+    // add name, label, and type properties
+    const label = (_.isFunction(this.props.labelFunction)
+      ? this.props.labelFunction(fieldName)
+      : fieldName)
+
+    const field = {
+      label,
+      name: fieldName,
+      datatype: fieldSchema.type,
+      control: fieldSchema.control,
+      layout: this.props.layout,
+    }
+
+    // add value
+    field.value = (this.getDocument() && Utils.deepValue(this.getDocument(), fieldName)) || ''
+
+    // replace value by prefilled value if value is empty
+    if (fieldSchema.autoform && fieldSchema.autoform.prefill) {
+      const prefilledValue = _.result(fieldSchema.autoform, 'prefill')
+      if (!!prefilledValue && !field.value) {
+        field.prefilledValue = prefilledValue
+        field.value = prefilledValue
+      }
+    }
+
+    // add options if they exist
+    if (fieldSchema.autoform && fieldSchema.autoform.options) {
+      field.options = _.result(fieldSchema.autoform, 'options')
+    }
+
+    if (fieldSchema.autoform && fieldSchema.autoform.disabled) {
+      field.disabled = _.result(fieldSchema.autoform, 'disabled')
+    }
+
+    if (fieldSchema.autoform && fieldSchema.autoform.help) {
+      field.help = _.result(fieldSchema.autoform, 'help')
+    }
+
+    return field
   }
 
   // --------------------------------------------------------------------- //
@@ -219,52 +276,7 @@ class NovaForm extends Component {
 
   render() {
     // build fields array by iterating over the list of field names
-    let fields = this.getFieldNames().map(fieldName => {
-      // get schema for the current field
-      const fieldSchema = this.props.collection.simpleSchema()._schema[fieldName]
-      fieldSchema.name = fieldName
-
-      // add name, label, and type properties
-      const label = (_.isFunction(this.props.labelFunction)
-        ? this.props.labelFunction(fieldName)
-        : fieldName)
-
-      const field = {
-        label,
-        name: fieldName,
-        datatype: fieldSchema.type,
-        control: fieldSchema.control,
-        layout: this.props.layout,
-      }
-
-      // add value
-      field.value = (this.getDocument() && Utils.deepValue(this.getDocument(), fieldName)) || ''
-
-      // replace value by prefilled value if value is empty
-      if (fieldSchema.autoform && fieldSchema.autoform.prefill) {
-        const prefilledValue = _.result(fieldSchema.autoform, 'prefill')
-        if (!!prefilledValue && !field.value) {
-          field.prefilledValue = prefilledValue
-          field.value = prefilledValue
-        }
-      }
-
-      // add options if they exist
-      if (fieldSchema.autoform && fieldSchema.autoform.options) {
-        field.options = _.result(fieldSchema.autoform, 'options')
-      }
-
-      if (fieldSchema.autoform && fieldSchema.autoform.disabled) {
-        field.disabled = _.result(fieldSchema.autoform, 'disabled')
-      }
-
-      if (fieldSchema.autoform && fieldSchema.autoform.help) {
-        field.help = _.result(fieldSchema.autoform, 'help')
-      }
-
-      return field
-    })
-
+    let fields = this.getFieldNames().map(fieldName => this.buildFieldStub(fieldName))
     // console.log(fields)
 
     // remove fields where control = "none"
@@ -275,7 +287,6 @@ class NovaForm extends Component {
         <Formsy.Form
           onSubmit={this.submitForm}
           disabled={this.state.disabled}
-          ref={(c) => this._form = c}
         >
           {this.renderErrors()}
           {fields.map(field =>

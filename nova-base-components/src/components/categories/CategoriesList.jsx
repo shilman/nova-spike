@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import { _ } from 'underscore'
 import { Button, DropdownButton, MenuItem, Modal } from 'react-bootstrap'
 
-import Telescope, { ModalTrigger, ContextPasser } from 'nova-core'
+import Telescope, { ContextPasser } from 'nova-core'
 import Users from 'nova-users'
 
 import Router from '../router.js'
@@ -10,7 +10,6 @@ import Router from '../router.js'
 // note: cannot use ModalTrigger component because of https://github.com/react-bootstrap/react-bootstrap/issues/1808
 
 class CategoriesList extends Component {
-
   constructor() {
     super()
     this.openCategoryEditModal = this.openCategoryEditModal.bind(this)
