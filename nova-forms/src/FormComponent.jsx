@@ -20,15 +20,15 @@ class FormComponent extends Component {
   }
 
   handleBlur() {
-    this.props.updateCurrentValue(this.props.name, this.formControl.getValue())
+    const value = this.formControl && this.formControl.getValue()
+    this.props.updateCurrentValue(this.props.name, value)
   }
 
   renderComponent() {
-
     const properties = {
       ...this.props,
       onBlur: this.handleBlur,
-      ref: (ref) => this.formControl = ref,
+      ref: (c) => this.formControl = c,
     }
 
     // if control is a React component, use it
@@ -98,18 +98,13 @@ const CheckboxGroup = React.createClass({
     }
   },
 
-  refName(key) {
-    return `_element-${key}`
-  },
-
   changeCheckbox: function () {
     var value = []
-    this.props.options.forEach(function (option, key) {
-      if (this[this.refName(key)].checked) {
+    this.props.options.forEach((option, key) => {
+      if (this[`element-${key}`].checked) {
         value.push(option.value)
       }
-
-    }.bind(this))
+    })
     this.setValue(value)
     this.props.onChange(this.props.name, value)
   },
@@ -123,7 +118,7 @@ const CheckboxGroup = React.createClass({
         <div className='checkbox' key={key}>
           <label>
             <input
-              ref={(c) => this[this.refName(key)] = c}
+              ref={(c) => this[`element-${key}`] = c}
               checked={checked}
               type='checkbox'
               value={checkbox.value}

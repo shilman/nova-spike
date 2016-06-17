@@ -46,8 +46,8 @@ Telescope.registerComponent('PostsThumbnail', require('./posts/PostsThumbnail.js
 Telescope.registerComponent('CommentsItem', require('./comments/CommentsItem.jsx'))
 Telescope.registerComponent('CommentsList', require('./comments/CommentsList.jsx'))
 Telescope.registerComponent('CommentsNode', require('./comments/CommentsNode.jsx'))
-// Telescope.registerComponent('CommentsNew', require('./comments/CommentsNew.jsx'))
-// Telescope.registerComponent('CommentsEdit', require('./comments/CommentsEdit.jsx'))
+Telescope.registerComponent('CommentsNew', require('./comments/CommentsNew.jsx'))
+Telescope.registerComponent('CommentsEdit', require('./comments/CommentsEdit.jsx'))
 Telescope.registerComponent('CommentsLoadMore', require('./comments/CommentsLoadMore.jsx'))
 
 // categories
