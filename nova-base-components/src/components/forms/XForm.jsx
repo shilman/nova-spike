@@ -1,5 +1,5 @@
 import React from 'react'
-import XFormComponent from './XFormComponent'
+import XFormComponent from './XFormComponent.jsx'
 
 let _x = null
 const XForm = () => (

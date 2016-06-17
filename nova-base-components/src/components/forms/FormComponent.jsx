@@ -1,8 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import Formsy from 'formsy-react'
-import FRC from './formsy-components'
+import FRC from './formsy-components/main.js'
 
-import DateTime from './DateTime'
 import Utils from './utils.js'
 
 const Checkbox = FRC.Checkbox

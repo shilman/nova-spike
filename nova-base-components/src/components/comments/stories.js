@@ -10,6 +10,10 @@ import CommentsNew from './CommentsNew.jsx'
 import CommentsList from './CommentsList.jsx'
 import CommentsNode from './CommentsNode.jsx'
 
+// FIXME: temporary
+import NovaForm from 'nova-forms'
+import Comments from 'nova-comments'
+
 const itemCallbacks = {
   replyCallback: action('reply'),
   editCallback: action('edit'),
@@ -88,4 +92,22 @@ storiesOf('CommentsNode', module)
   })
   .add('nested comment', () => {
     return <CommentsNode {...Factory.build('comments-node-nested-props')} />
+  })
+
+// FIXME: temporary
+storiesOf('NovaForm StringRefs', module)
+  .add('comment edit test', () => {
+    const comment = Factory.build('comment')
+    const user = Factory.build('user')
+    return (
+      <NovaForm
+        collection={Comments}
+        document={comment}
+        currentUser={user}
+        methodName='comments.edit'
+        successCallback={action('success')}
+        layout='elementOnly'
+        cancelCallback={action('cancel')}
+      />
+    )
   })

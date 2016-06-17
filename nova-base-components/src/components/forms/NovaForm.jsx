@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 import { _ } from 'underscore'
 //import { Meteor } from 'nova-core'
 
-import FormComponent from './FormComponent'
+import FormComponent from './FormComponent.jsx'
 import Utils from './utils.js'
 
 /*
