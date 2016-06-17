@@ -60,7 +60,9 @@
     "nova-core": "^0.0.0",
     "nova-forms": "^0.0.0",
     "nova-users": "^0.0.0",
-    "react-bootstrap": "^0.29.4"
+    "react-bootstrap": "^0.29.4",
+    "formsy-react": "^0.18.0",
+    "shilman-react-components": "^0.7.1"
   },
   "main": "dist/index.js",
   "engines": {

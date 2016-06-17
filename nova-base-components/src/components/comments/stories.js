@@ -2,10 +2,6 @@ import React from 'react'
 import { storiesOf, action } from '@kadira/storybook'
 import WithContext from 'react-with-context'
 
-// FIXME: should be part of forms package
-import Comments from 'nova-comments'
-import { NovaForm, XForm } from 'nova-forms'
-
 import Factory from '../../factories'
 import '../components.js'
 import CommentsItem from './CommentsItem.jsx'
@@ -92,29 +88,4 @@ storiesOf('CommentsNode', module)
   })
   .add('nested comment', () => {
     return <CommentsNode {...Factory.build('comments-node-nested-props')} />
-  })
-
-// FIXME: should be part of forms package
-storiesOf('XForm', module)
-  .add('default', () => {
-    return (
-      <XForm />
-    )
-  })
-
-storiesOf('NovaForm', module)
-  .add('comment edit', () => {
-    const comment = Factory.build('comment')
-    const user = Factory.build('user')
-    return (
-      <NovaForm
-        collection={Comments}
-        document={comment}
-        currentUser={user}
-        methodName='comments.edit'
-        successCallback={action('success')}
-        layout='elementOnly'
-        cancelCallback={action('cancel')}
-      />
-    )
   })
