@@ -10,7 +10,6 @@ import '../components/comments/stories.js'
 import '../components/categories/stories.js'
 import '../components/common/stories.js'
 import '../components/posts/stories.js'
-import '../components/forms/stories.js'
 
 // FIXME: how do we unstub on teardown?
 Meteor.call = (methodName, args) => action(methodName)(args)

@@ -14,7 +14,7 @@
     "publish-storybook": "bash .scripts/publish_storybook.sh"
   },
   "devDependencies": {
-    "@kadira/storybook": "^1.19.0",
+    "@kadira/storybook": "^1.33.0",
     "babel-cli": "^6.5.0",
     "babel-core": "^6.5.0",
     "babel-eslint": "^6.0.2",
@@ -61,8 +61,7 @@
     "nova-forms": "^0.0.0",
     "nova-users": "^0.0.0",
     "react-bootstrap": "^0.29.4",
-    "formsy-react": "^0.18.0",
-    "shilman-react-components": "^0.7.1"
+    "formsy-react": "^0.18.0"
   },
   "main": "dist/index.js",
   "engines": {

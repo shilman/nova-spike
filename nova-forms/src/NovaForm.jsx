@@ -186,7 +186,7 @@ class NovaForm extends Component {
 
     if (this.getFormType() === 'new') { // new document form
       // remove any empty properties
-      let document = _.compactObject(Utils.flatten(data))
+      let document = Utils.compactObject(Utils.flatten(data))
 
       // add prefilled properties
       if (this.props.prefilledProps) {
@@ -199,7 +199,7 @@ class NovaForm extends Component {
       const document = this.getDocument()
 
       // put all keys with data on $set
-      const set = _.compactObject(Utils.flatten(data))
+      const set = Utils.compactObject(Utils.flatten(data))
 
       // put all keys without data on $unset
       const unsetKeys = _.difference(fields, _.keys(set))

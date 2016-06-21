@@ -1,3 +1,5 @@
+import { _ } from 'underscore'
+
 const Utils = {};
 
 // add support for nested properties
@@ -32,6 +34,16 @@ Utils.flatten = function(data) {
   }
   recurse(data, "");
   return result;
+}
+
+Utils.compactObject = function(o) {
+  var clone = _.clone(o);
+  _.each(clone, function(v, k) {
+   if(!v) {
+     delete clone[k];
+   }
+  });
+  return clone;
 }
 
 export default Utils;
