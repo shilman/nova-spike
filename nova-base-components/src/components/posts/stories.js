@@ -1,5 +1,5 @@
 import React from 'react'
-import { storiesOf, action } from '@kadira/storybook'
+import { storiesWithContext, storiesOf, action } from '../../stories/helpers.js'
 import WithContext from 'react-with-context'
 
 import Factory from '../../factories'
@@ -16,16 +16,14 @@ import PostsCommenters from './PostsCommenters.jsx'
 import PostsStats from './PostsStats.jsx'
 import PostsItem from './PostsItem.jsx'
 
+Factory.define('PostsLoadMore-default').attrs({
+  count: 10,
+  totalCount: 15,
+  loadMore: () => action('loadMore'),
+})
+
 storiesOf('PostsLoadMore', module)
-  .add('default', () => {
-    return (
-      <PostsLoadMore
-        loadMore={action('loadMore')}
-        count={10}
-        totalCount={15}
-      />
-    )
-  })
+  .addStoriesGroup(PostsLoadMore, Factory.buildStoriesWithPrefix('PostsLoadMore-'))
 
 storiesOf('PostsNoMore', module)
   .add('default', () => <PostsNoMore />)

@@ -42,6 +42,7 @@
     "react": "^15.0.0",
     "react-addons-test-utils": "^15.0.0",
     "react-dom": "^15.0.0",
+    "react-storybook-addon-add-stories-group": "^0.1.0",
     "react-with-context": "^1.0.2",
     "rosie": "^1.6.0",
     "sass-loader": "^3.2.0",
@@ -55,13 +56,14 @@
   "dependencies": {
     "babel-runtime": "^6.5.0",
     "classnames": "^2.2.5",
+    "formsy-react": "^0.18.0",
     "moment": "^2.13.0",
     "nova-comments": "^0.0.0",
     "nova-core": "^0.0.0",
     "nova-forms": "^0.0.0",
     "nova-users": "^0.0.0",
-    "react-bootstrap": "^0.29.4",
-    "formsy-react": "^0.18.0"
+    "react": "^15.1.0",
+    "react-bootstrap": "^0.29.4"
   },
   "main": "dist/index.js",
   "engines": {

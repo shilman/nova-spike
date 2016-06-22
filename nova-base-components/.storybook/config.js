@@ -3,10 +3,12 @@
 // This is an auto generated file with React CDK.
 // Do not modify this file.
 
-import { configure } from '@kadira/storybook';
+import { configure, setAddon } from '@kadira/storybook'
+import addStoriesGroup from 'react-storybook-addon-add-stories-group'
 
+setAddon(addStoriesGroup)
 function loadStories() {
-  require('../src/stories');
+  require('../src/stories')
 }
 
-configure(loadStories, module);
+configure(loadStories, module)

@@ -1,8 +1,13 @@
 import { Factory } from 'rosie'
+import { _ } from 'underscore'
 
-// ------------------------------------- //
-// Core
-// ------------------------------------- //
+Factory.buildStoriesWithPrefix = (prefix, extraProps={}) => (
+  _.chain(Factory.factories)
+    .pairs()
+    .filter((pair) => pair[0].startsWith(prefix))
+    .map((pair) => ({ name: pair[0].replace(prefix, ''), props: pair[1].build(extraProps) }))
+    .value()
+)
 
 Factory.define('user').attrs({
   _id: '0',
@@ -102,78 +107,9 @@ Factory.define('category1')
   .extend('category')
   .attrs({ _id: '1', name: 'categoryName1' })
 
-
-// ------------------------------------- //
-// Components
-// ------------------------------------- //
-
-Factory.define('comments-item-props').attrs({
-  comment: () => Factory.build('comment'),
-  currentUser: () => Factory.build('user2'),
+Factory.define('context-default').attrs({
+  currentUser: () => Factory.build('user'),
+  currentRoute: () => Factory.build('route'),
 })
-
-Factory.define('comments-item-deleted-props')
-  .extend('comments-item-props')
-  .attrs({ comment: () => Factory.build('comment', { isDeleted: true }) })
-
-Factory.define('comments-item-owner-props')
-  .extend('comments-item-props')
-  .attrs({ currentUser: () => Factory.build('user') })
-
-Factory.define('comments-item-editing')
-  .extend('comments-item-props')
-  .attrs({ showEdit: true })
-
-Factory.define('comments-item-replying')
-  .extend('comments-item-props')
-  .attrs({ showReply: true })
-
-Factory.define('comments-edit-props').attrs({
-  comment: () => Factory.build('comment'),
-})
-
-Factory.define('comments-list-default-props').attrs({
-  results: () => [Factory.build('comment'), Factory.build('comment1')],
-  currentUser: () => Factory.build('user2'),
-  hasMore: false,
-  ready: true,
-  count: 2,
-  totalCount: 2,
-})
-
-Factory.define('comments-list-has-more-props')
-  .extend('comments-list-default-props')
-  .attrs({ hasMore: true, totalCount: 4 })
-
-Factory.define('comments-list-loading-more-props')
-  .extend('comments-list-has-more-props')
-  .attrs({ ready: false })
-
-Factory.define('comments-list-empty-props')
-  .extend('comments-list-default-props')
-  .attrs({ results: [], count: 0, totalCount: 0 })
-
-Factory.define('comments-list-loading-props')
-  .extend('comments-list-empty-props')
-  .attrs({ ready: false })
-
-Factory.define('comments-node-props')
-  .extend('comments-item-props')
-
-Factory.define('comments-node-nested-props')
-  .extend('comments-node-props')
-  .attrs({ comment: Factory.build('comment-with-children') })
-
-Factory.define('category-props')
-  .attrs({
-    key: 0,
-    category: () => Factory.build('category'),
-    currentCategorySlug: 'category-slug', // FIXME: ??
-  })
-
-Factory.define('categories-list-props')
-  .attrs({
-    categories: () => [Factory.build('category'), Factory.build('category1')],
-  })
 
 export default Factory

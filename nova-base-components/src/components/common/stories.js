@@ -1,5 +1,5 @@
 import React from 'react'
-import { storiesOf, action } from '@kadira/storybook'
+import { storiesWithContext, storiesOf, action } from '../../stories/helpers.js'
 import WithContext from 'react-with-context'
 
 import Factory from '../../factories'

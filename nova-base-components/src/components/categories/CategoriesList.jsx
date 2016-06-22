@@ -35,7 +35,6 @@ class CategoriesList extends Component {
   }
 
   renderCategoryEditModal(category, index) {
-
     return (
       <Modal key={index} show={this.state.openModal === index + 1} onHide={this.closeModal}>
         <Modal.Header closeButton>
@@ -92,7 +91,7 @@ class CategoriesList extends Component {
           title='Categories'
           id='categories-dropdown'
         >
-          <div className='category-menu-item dropdown-item'><MenuItem href={Router.path('posts.list')} eventKey={0}>All Categories</MenuItem></div>
+          {<div className='category-menu-item dropdown-item'><MenuItem href={Router.path('posts.list')} eventKey={0}>All Categories</MenuItem></div>}
           {
             categories && categories.length > 0
             ? categories.map((category, index) => {
@@ -110,7 +109,9 @@ class CategoriesList extends Component {
         </DropdownButton>
         <div>
           {/* modals cannot be inside DropdownButton component (see GH issue) */}
-          {categories && categories.length > 0 ? categories.map((category, index) => this.renderCategoryEditModal(category, index)) : null}
+          {categories && categories.length > 0
+            ? categories.map((category, index) => this.renderCategoryEditModal(category, index))
+            : null}
           {this.renderCategoryNewModal()}
         </div>
       </div>

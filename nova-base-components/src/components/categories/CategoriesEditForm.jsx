@@ -27,7 +27,6 @@ class CategoriesEditForm extends Component {
   }
 
   render() {
-
     return (
       <div className='categories-edit-form'>
         <NovaForm

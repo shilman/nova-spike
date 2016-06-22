@@ -1,52 +1,44 @@
 import React from 'react'
-import { storiesOf, action } from '@kadira/storybook'
-import WithContext from 'react-with-context'
-
+import { storiesWithContext, storiesOf, action } from '../../stories/helpers.js'
 import Factory from '../../factories'
+
 import '../components.js'
 import Category from './Category.jsx'
 import CategoriesList from './CategoriesList.jsx'
 import CategoriesNewForm from './CategoriesNewForm.jsx'
 import CategoriesEditForm from './CategoriesEditForm.jsx'
 
-const categoryCallbacks = {
-  openModal: action('open-modal'),
-}
+const context = Factory.build('context-default')
+
+Factory.define('Category-default')
+  .attrs({
+    key: 0,
+    category: () => Factory.build('category'),
+    currentCategorySlug: 'category-slug', // FIXME: ??
+    openModal: () => action('open-modal'),
+  })
 
 storiesOf('Category', module)
-  .add('default view', () => {
-    return <Category {...Factory.build('category-props', categoryCallbacks)} />
+  .addStoriesGroup(Category, Factory.buildStoriesWithPrefix('Category-'))
+
+Factory.define('CategoriesList-default')
+  .attrs({
+    categories: () => [Factory.build('category'), Factory.build('category1')],
+    openModal: () => action('open-modal'),
   })
 
-storiesOf('CategoriesList', module)
-  .addDecorator((story) => {
-    const context = {
-      currentUser: Factory.build('user'),
-      currentRoute: Factory.build('route'),
-    }
-    return <WithContext context={context}>{story()}</WithContext>
-  })
-  .add('default view', () => {
-    return <CategoriesList {...Factory.build('categories-list-props', categoryCallbacks)} />
-  })
+storiesWithContext('CategoriesList', module, context)
+  .addStoriesGroup(CategoriesList, Factory.buildStoriesWithPrefix('CategoriesList-'))
 
-storiesOf('CategoriesNewForm', module)
-  .addDecorator((story) => {
-    const context = { currentUser: Factory.build('user') }
-    return <WithContext context={context}>{story()}</WithContext>
-  })
-  .add('default view', () => {
+storiesWithContext('CategoriesNewForm', module, context)
+  .add('default', () => {
     return <CategoriesNewForm />
   })
 
-storiesOf('CategoriesEditForm', module)
-  .addDecorator((story) => {
-    const context = { currentUser: Factory.build('user') }
-    return <WithContext context={context}>{story()}</WithContext>
-  })
-  .add('default view', () => {
-    return <CategoriesEditForm />
+Factory.define('CategoriesEditForm-default')
+  .attrs({
+    categories: () => [Factory.build('category'), Factory.build('category1')],
   })
 
-
-//storiesOf('CategoriesEditForm', module)
+storiesWithContext('CategoriesEditForm', module, context)
+  .addStoriesGroup(CategoriesEditForm, Factory.buildStoriesWithPrefix('CategoriesEditForm-'))
