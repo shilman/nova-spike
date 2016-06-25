@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PACKAGES=(nova-core nova-forms nova-comments nova-categories nova-users)
+PACKAGES=(nova-core nova-forms nova-comments nova-categories nova-users nova-base-styles)
 
 echo "Cleaning packages"
 for pkg in ${PACKAGES[@]}; do

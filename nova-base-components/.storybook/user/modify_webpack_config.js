@@ -5,21 +5,28 @@ module.exports = function (config) {
   // modify as you need.
   config.module.loaders = [
     {
-      test: /\.css?$/,
+      test: /\.css$/,
       loader: 'style!css!',
-      include: path.resolve(__dirname, '../../'),
+      include: [
+        path.resolve(__dirname, '../../'),
+        path.resolve(__dirname, '../../../nova-base-styles/'),
+      ],
     },
     {
       test: /\.scss$/,
-      loader: 'style!css!sass',
-      exclude: /node_modules/,
-      include: path.resolve(__dirname, '../../'),
+      loader: 'style!css!sass!',
+      include: [
+        path.resolve(__dirname, '../../'),
+        path.resolve(__dirname, '../../../nova-base-styles/'),
+      ],
     },
     {
       test: /\.sass$/,
-      loader: 'style!css!sass?indentedSyntax=sass',
-      exclude: /node_modules/,
-      include: path.resolve(__dirname, '../../'),
+      loader: 'style!css!sass?indentedSyntax=sass!',
+      include: [
+        path.resolve(__dirname, '../../'),
+        path.resolve(__dirname, '../../../nova-base-styles/'),
+      ],
     },
   ]
 }

@@ -58,6 +58,7 @@
     "classnames": "^2.2.5",
     "formsy-react": "^0.18.0",
     "moment": "^2.13.0",
+    "nova-base-styles": "^0.0.0",
     "nova-comments": "^0.0.0",
     "nova-core": "^0.0.0",
     "nova-forms": "^0.0.0",
